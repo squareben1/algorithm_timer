@@ -1,24 +1,10 @@
 from timeit import default_timer as timer
+from algorithms import *
 import random
 
-arr = list(range(1000000))
+arr = list(range(10000000))
 
-
-def binary_search(list, item):
-    low = 0
-    high = len(list) - 1
-    while low <= high:
-        mid = round((low + high) / 2)
-        guess = list[mid]
-        if guess == item:
-            return mid
-        if guess > item:
-            high = mid - 1
-        else:
-            low = mid + 1
-
-
-num = random.randint(1, len(arr))
+rand_num = random.randint(1, len(arr))
 
 
 def basic_timer(func, *args):
@@ -26,7 +12,18 @@ def basic_timer(func, *args):
     func(*args)
     end = timer()
     value = end - start
-    print('%.12f' % value)
+    return value
 
 
-basic_timer(binary_search, arr, 999999)
+def get_average(func, *args):
+    total_time = 0
+    for i in range(10):
+        total_time += basic_timer(func, *args)
+    avg_time = total_time / 10
+    print('Average time to run', func.__name__,
+          'with an array', len(args[0]), 'items long:')
+    print('%.12f' % avg_time)
+
+
+get_average(binary_search, arr, rand_num)
+# get_average(random.shuffle(arr))
