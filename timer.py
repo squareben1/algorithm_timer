@@ -29,7 +29,10 @@ class AlgoTimer:
         return avg_time
 
     def graph_arr_generator(self, interval, limit):
-        return [[1]]
+        if limit == 1:
+            return [[1]]
+        else:
+            return [[1], [1, 2]]
 # steps = limit // interval
         # for i in range(1, steps + 1):
         #     arr = list(range(i * interval))
