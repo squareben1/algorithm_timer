@@ -23,7 +23,12 @@ class AlgoTimer:
         for i in range(10):
             total_time += self.basic_timer(func, *args)
         avg_time = total_time / 10
-        return avg_time
+        return self.print_results(avg_time, func.__name__, len(args[0]))
+
+    def print_results(self, time, name, array_length):
+        average = '%.12f' % time
+        print('Average time to run', name,
+              'with an array', array_length, 'items long:', average)
 
     def graph_arr_generator(self, interval, limit):
         output_arr = []
@@ -33,7 +38,7 @@ class AlgoTimer:
 
 
 """
-        print('Average time to run', func.__name__,
-              'with an array', len(args[0]), 'items long:')
-        average = '%.12f' % avg_time
+print('Average time to run', func.__name__,
+      'with an array', len(args[0]), 'items long:')
+average = '%.12f' % avg_time
 """
