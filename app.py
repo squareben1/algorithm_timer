@@ -23,11 +23,13 @@ class AlgoApp:
             time_res = []
             self.arr_length.append(len(arr))
             for i in range(1000):
-                output = self.timer.get_average(func, arr, random.randint(0, len(arr)))
+                output = self.timer.get_average(
+                    func, arr, random.randint(0, len(arr)))
                 time_res.append(output[0])
             average = sum(time_res) / len(time_res)
             self.time_results.append(average)
         return self.time_results, self.arr_length
+
 
 timer = AlgoTimer()
 app = AlgoApp(50, 10_000_000, timer)
@@ -35,3 +37,5 @@ time_results, arr_length = app.run_tests(binary_search)
 
 create_graph(time_results, arr_length)
 
+# TODO: add final line to ocmmand line output givcing overall average & func.__name__
+# TODO: Refactor the eff out of app.py
