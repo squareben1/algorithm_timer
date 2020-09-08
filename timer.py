@@ -22,7 +22,7 @@ class AlgoTimer:
         for i in range(10):
             total_time += self.basic_timer(func, *args)
         avg_time = total_time / 10
-        return self.print_results(avg_time, func.__name__, len(args[0]))
+        return [avg_time, func.__name__, len(args[0])]
 
     def print_results(self, time, name, array_length):
         average = '%.12f' % time
