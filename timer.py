@@ -1,15 +1,7 @@
 from timeit import default_timer as timer
 import random
 
-arr = list(range(10000000))
-
-rand_num = random.randint(1, len(arr))
-
-
 class AlgoTimer:
-    def __init__(self):
-        self.avgs_arr = []
-
     def basic_timer(self, func, *args):
         start = timer()
         func(*args)
@@ -19,21 +11,17 @@ class AlgoTimer:
 
     def get_average(self, func, *args):
         total_time = 0
-        for i in range(10):
+        for i in range(50):
             total_time += self.basic_timer(func, *args)
-        avg_time = total_time / 10
+        avg_time = total_time / 50
+
+        self.print_results(avg_time)
         return [avg_time, len(args[0])]
 
-    def print_results(self, time, name, array_length):
+    def print_results(self, time):
         average = '%.12f' % time
-        print('Average time to run', name,
-              'with an array', array_length, 'items long:', average)
+        print('Average time: ', average)
 
-    def graph_arr_generator(self, num_arrs, limit):
-        output_arr = []
-        step = limit // num_arrs
-        for i in range(1, num_arrs+1):
-            output_arr.append(list(range(1, (i * step)+1)))
-        return output_arr
+
 
 
