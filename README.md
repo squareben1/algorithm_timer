@@ -7,3 +7,4 @@ A program to time algorithms and plot those times to a graph.
 Enter into your terminal: 
 
 ``` python3 app.py ```
+
