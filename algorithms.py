@@ -22,12 +22,10 @@ def linear_search(mylist, find):
 def find_dups(arr):
     return_arr = []
 
-    if len(arr) < 2:
-        return []
-    else:
-        for i in range(len(arr)):
-            for y in range(i+1, len(arr)):
-                if arr[i] == arr[y]:
+    for i in range(len(arr)):
+        for y in range(i+1, len(arr)):
+            if arr[i] == arr[y]:
+                if arr[i] not in return_arr:
                     return_arr.append(arr[i])
                     break
-        return return_arr
+    return return_arr

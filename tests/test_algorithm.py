@@ -12,3 +12,7 @@ def test_1_dup_returns_1():
 
 def test_1_2_2_returns_2():
     assert find_dups([1, 2, 2]) == [2]
+
+
+def test_doesnt_return_dups():
+    assert find_dups([1, 2, 2, 2]) == [2]
