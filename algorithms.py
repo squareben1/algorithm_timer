@@ -17,3 +17,7 @@ def linear_search(mylist, find):
         if x == find:
             return True
     return False
+
+
+def find_dups(arr):
+    return []
