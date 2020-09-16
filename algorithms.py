@@ -20,7 +20,14 @@ def linear_search(mylist, find):
 
 
 def find_dups(arr):
+    return_arr = []
+
     if len(arr) < 2:
         return []
     else:
-        return [1]
+        for i in range(len(arr)):
+            for y in range(i+1, len(arr)):
+                if arr[i] == arr[y]:
+                    return_arr.append(arr[i])
+                    break
+        return return_arr
