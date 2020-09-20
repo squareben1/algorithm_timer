@@ -17,7 +17,7 @@ class AlgoApp:
             time_res = []
             self.arr_length.append(len(arr))
             if find_int:
-                for i in range(100):
+                for i in range(1000):
                     output = self.timer.get_average(
                         func, arr, random.randint(0, len(arr)))
                     time_res.append(output[0])
@@ -27,6 +27,13 @@ class AlgoApp:
                     output = self.timer.get_average(
                         func, arr)
                     time_res.append(output[0])
+
+            time_res = sorted(time_res)
+            for time in time_res:
+                pc_to_cut = len(time_res) // 10
+                end_slice = len(time_res) - pc_to_cut
+                time_res = time_res[pc_to_cut:end_slice]
+
             average = sum(time_res) / len(time_res)
             self.time_results.append(average)
         return self.time_results, self.arr_length
