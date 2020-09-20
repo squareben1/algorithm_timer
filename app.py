@@ -21,6 +21,7 @@ class AlgoApp:
                     output = self.timer.get_average(
                         func, arr, random.randint(0, len(arr)))
                     time_res.append(output[0])
+                    # TODO EXTRACT these to own funcs
             else:
                 for i in range(100):
                     output = self.timer.get_average(
@@ -63,3 +64,7 @@ if __name__ == "__main__":
     import algorithms
     app = AlgoApp(sys.argv[1], sys.argv[2])
     app.run(sys.argv[3])
+
+# TODO Tidy this up big time
+# TODO fix find_dups so it isn't quadratic
+# TODO write algorithms for shuffling, sorting and reversing
