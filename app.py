@@ -2,13 +2,12 @@ import random
 from grapher import create_graph
 from timer import AlgoTimer
 from arr_generators import *
-from algorithms import *
 
 
 class AlgoApp:
-    def __init__(self, arr_num, arr_max, timer):
-        self.timer = timer()
-        self.test_arr = arr_generator(arr_num, arr_max)
+    def __init__(self, arr_num, arr_max):
+        self.timer = AlgoTimer()
+        self.test_arr = arr_generator(int(arr_num), int(arr_max))
         self.time_results = []
         self.arr_length = []
 
@@ -29,11 +28,9 @@ class AlgoApp:
         create_graph(time_results, arr_length, algorithm.__name__)
 
 
-app = AlgoApp(20, 10_000, AlgoTimer)
-app.run(binary_search)
-
-# TODO: add final line to command line output giving overall average & func.__name__
-
-# if __name__ == "__main__":
-#     import sys
-#     app = AlgoApp(sys.argv[0], sys.argv[1], AlgoTimer)
+if __name__ == "__main__":
+    import sys
+    import algorithms
+    app = AlgoApp(sys.argv[1], sys.argv[2])
+    method_to_call = getattr(algorithms, sys.argv[3])
+    app.run(method_to_call)

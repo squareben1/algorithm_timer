@@ -9,8 +9,9 @@ def arr_generator(num_arrs, limit):
     return output_arr
 
 
-def insert_dup(arr):
+def insert_dup(arr, dup_percent=10):
+    interval = int(100 / dup_percent)
     for sub_arr in arr:
-        for i in range(0, len(sub_arr), 10):
+        for i in range(0, len(sub_arr), interval):
             sub_arr[i] += 1
     return arr
