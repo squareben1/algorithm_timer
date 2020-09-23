@@ -12,47 +12,62 @@ class AlgoApp:
         self.time_results = []
         self.arr_length = []
 
-    def search_for_random_num(func, arr, results_array):
+
+    def search_for_random_num(self, func, arr):
+        hold_arr = []
         for i in range(1000):
             output = self.timer.get_average(
                 func, arr, random.randint(0, len(arr)))
-            results_array.append(output[0])
+            hold_arr.append(output[0])
+        return hold_arr
 
-    def run_sort_algo(func, arr):
+
+    def run_sort_algo(self, func, arr):
+        hold_arr = []
         for i in range(100):
             output = self.timer.get_average(
                 func, arr)
-            time_res.append(output[0])
+            hold_arr.append(output[0])
+        return hold_arr
+
+
+    def get_average(self, result):
+        sliced_results = self.slice_outlier_results(result)
+        average = sum(sliced_results) / len(sliced_results)
+        return average
+
 
     def get_average_with_random_num(self, func, find_int=False):
         for arr in self.test_arr:
-            time_res = []
             self.arr_length.append(len(arr))
             if find_int:
-                self.search_for_random_num(func, arr, time_res)
+                result = self.search_for_random_num(func, arr)
             else:
-                for i in range(100):
-                    self.run_sort_algo(func, arr)
+                result = self.run_sort_algo(func, arr)
 
-            time_res = sorted(time_res)
-            for time in time_res:
-                pc_to_cut = len(time_res) // 10
-                end_slice = len(time_res) - pc_to_cut
-                time_res = time_res[pc_to_cut:end_slice]
-
-            average = sum(time_res) / len(time_res)
-            self.time_results.append(average)
+            self.time_results.append(self.get_average(result))
         return self.time_results, self.arr_length
+
+
+    def slice_outlier_results(self, results_array):
+        results_array = sorted(results_array)
+        for time in results_array:
+            pc_to_cut = len(results_array) // 10
+            end_slice = len(results_array) - pc_to_cut
+        return results_array[pc_to_cut:end_slice]
+
 
     def run_search(self, method_to_call):
         time_results, arr_length = self.get_average_with_random_num(
             method_to_call, True)
         create_graph(time_results, arr_length, method_to_call.__name__)
 
+
     def run_sort(self, method_to_call):
         time_results, arr_length = self.get_average_with_random_num(
             method_to_call)
         create_graph(time_results, arr_length, method_to_call.__name__)
+
 
     def run_dups(self, method_to_call):
         self.test_arr = insert_dup(self.test_arr)
@@ -60,7 +75,7 @@ class AlgoApp:
         time_results, arr_length = self.get_average_with_random_num(
             method_to_call)
         create_graph(time_results, arr_length, method_to_call.__name__)
-        print(self.test_arr)
+
 
     def run(self, algorithm):
         method_to_call = getattr(algorithms, algorithm)

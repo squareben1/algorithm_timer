@@ -11,7 +11,7 @@ class AlgoTimer:
 
     def get_average(self, func, *args):
         total_time = 0
-        for i in range(100):
+        for i in range(50):
             total_time += self.basic_timer(func, *args)
         avg_time = total_time / 50
 
