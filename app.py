@@ -12,7 +12,7 @@ class AlgoApp:
         self.time_results = []
         self.arr_length = []
 
-    def random_number_average(self, func, find_int=False):
+    def get_average_with_random_num(self, func, find_int=False):
         for arr in self.test_arr:
             time_res = []
             self.arr_length.append(len(arr))
@@ -39,19 +39,19 @@ class AlgoApp:
         return self.time_results, self.arr_length
 
     def run_search(self, method_to_call):
-        time_results, arr_length = self.random_number_average(
+        time_results, arr_length = self.get_average_with_random_num(
             method_to_call, True)
         create_graph(time_results, arr_length, method_to_call.__name__)
 
     def run_sort(self, method_to_call):
-        time_results, arr_length = self.random_number_average(
+        time_results, arr_length = self.get_average_with_random_num(
             method_to_call)
         create_graph(time_results, arr_length, method_to_call.__name__)
 
     def run_dups(self, method_to_call):
         self.test_arr = insert_dup(self.test_arr)
 
-        time_results, arr_length = self.random_number_average(
+        time_results, arr_length = self.get_average_with_random_num(
             method_to_call)
         create_graph(time_results, arr_length, method_to_call.__name__)
         print(self.test_arr)
