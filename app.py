@@ -12,21 +12,27 @@ class AlgoApp:
         self.time_results = []
         self.arr_length = []
 
+    def search_for_random_num(func, arr, results_array):
+        for i in range(1000):
+            output = self.timer.get_average(
+                func, arr, random.randint(0, len(arr)))
+            results_array.append(output[0])
+
+    def run_sort_algo(func, arr):
+        for i in range(100):
+            output = self.timer.get_average(
+                func, arr)
+            time_res.append(output[0])
+
     def get_average_with_random_num(self, func, find_int=False):
         for arr in self.test_arr:
             time_res = []
             self.arr_length.append(len(arr))
             if find_int:
-                for i in range(1000):
-                    output = self.timer.get_average(
-                        func, arr, random.randint(0, len(arr)))
-                    time_res.append(output[0])
-                    # TODO EXTRACT these to own funcs
+                self.search_for_random_num(func, arr, time_res)
             else:
                 for i in range(100):
-                    output = self.timer.get_average(
-                        func, arr)
-                    time_res.append(output[0])
+                    self.run_sort_algo(func, arr)
 
             time_res = sorted(time_res)
             for time in time_res:
