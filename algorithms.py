@@ -1,9 +1,9 @@
-def binary_search(list, item):
+def binary_search(arr, item):
     low = 0
-    high = len(list) - 1
+    high = len(arr) - 1
     while low <= high:
         mid = round((low + high) / 2)
-        guess = list[mid]
+        guess = arr[mid]
         if guess == item:
             return mid
         if guess > item:
@@ -12,40 +12,58 @@ def binary_search(list, item):
             low = mid + 1
 
 
-def linear_search(mylist, find):
-    for x in mylist:
+def linear_search(myarr, find):
+    for x in myarr:
         if x == find:
             return True
     return False
 
 
-def find_dups(arr):
-    return_arr = []
+def find_smallest(arr):
+    smallest = arr[0]
+    smallest_index = 0
+    for i in range(len(arr)):
+        if arr[i] < smallest:
+            smallest = arr[i]
+            smallest_index = i
+    return smallest_index
+
+
+def selection_sort(arr):
+    new_arr = []
+    for i in range(len(arr)):
+        smallest = find_smallest(arr)
+        new_arr.append(arr.pop(smallest))
+    return new_arr
+
+
+# this was our first attempt and resulted in a very slow, quadratic algorithm
+def slow_find_dups(arr):
+    duplicates = []
 
     for i in range(len(arr)):
         for y in range(i+1, len(arr)):
-            if arr[i] == arr[y] and arr[i] not in return_arr:
-                return_arr.append(arr[i])
+            if arr[i] == arr[y] and arr[i] not in duplicates:
+                duplicates.append(arr[i])
                 break
-    return return_arr
+    # print(duplicates)
+    return duplicates
 
 
-# TODO incorporate sorted list to speed up and remove nested for loop
-"""
-sort list A
-sort list B (according to the same sort order)
-I = 0
-J = 0
-repeat
-  X = A[I]
-  Y = B[J]
-  if X matches Y then
-    add (X, Y) to results
-    increment I
-    increment J
-  else if X < Y then
-    increment I
-  else increment J
-until either index reaches the end of its list
-If you do it this way, instead of the number of matches operations being based on length(A) * length(B), it's now based on length(A) + length(B), which means your code will run much faster.
-"""
+def find_dups(arr):  # second, much faster attempt,
+    sorted_arr = sorted(arr)
+    duplicates = []
+    for i in range(len(arr)-1):
+        if arr[i] == arr[i+1] and arr[i] not in duplicates:
+            duplicates.append(i)
+    return duplicates
+
+
+def find_uniq(arr):
+    seen = set()
+    uniq = []
+    for x in a:
+        if x not in seen:
+            uniq.append(x)
+            seen.add(x)
+    return uniq

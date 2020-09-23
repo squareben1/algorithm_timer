@@ -1,6 +1,7 @@
 from timeit import default_timer as timer
 import random
 
+
 class AlgoTimer:
     def basic_timer(self, func, *args):
         start = timer()
@@ -21,7 +22,3 @@ class AlgoTimer:
     def print_results(self, time):
         average = '%.12f' % time
         print('Average time: ', average)
-
-
-
-
