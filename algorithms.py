@@ -30,10 +30,11 @@ def find_smallest(arr):
 
 
 def selection_sort(arr):
+    copy_arr = arr[:]
     new_arr = []
-    for i in range(len(arr)):
-        smallest = find_smallest(arr)
-        new_arr.append(arr.pop(smallest))
+    for i in range(len(copy_arr)):
+        smallest = find_smallest(copy_arr)
+        new_arr.append(copy_arr.pop(smallest))
     return new_arr
 
 
