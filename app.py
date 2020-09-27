@@ -22,14 +22,17 @@ class AlgoApp:
         else:
             selected_function = self.run_sort_algo
 
+        self.loop_over_array(selected_function, algorithm_to_call)
+
+        create_graph(self.time_results, self.arr_length,
+                     algorithm_to_call.__name__)
+
+    def loop_over_array(self, selected_function, algorithm_to_call):
         for arr in self.test_arr:
             self.arr_length.append(len(arr))
             result = selected_function(algorithm_to_call, arr)
             self.time_results.append(
                 self.get_average_selected_time_data(result))
-
-        create_graph(self.time_results, self.arr_length,
-                     algorithm_to_call.__name__)
 
     def set_test_arr(self, algorithm):
         if 'dups' in algorithm:
