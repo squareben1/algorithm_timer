@@ -15,26 +15,30 @@ class AlgoApp:
 
     def select_run_type(self, algorithm):
         method_to_call = getattr(algorithms, algorithm)
-        if 'search' in algorithm:
-            self.get_average_with_random_num(method_to_call, True)
-        elif 'dups' in algorithm:
-            self.test_arr = insert_dup(self.test_arr)
-            self.get_average_with_random_num(method_to_call)
-        else:
-            self.get_average_with_random_num(method_to_call)
+    
+        self.get_average_with_random_num(algorithm)
 
         create_graph(self.time_results, self.arr_length, method_to_call.__name__)
 
-    def get_average_with_random_num(self, func, find_int=False):  # rename
+    def get_average_with_random_num(self, algorithm):  # rename
+        algorithm_to_call = getattr(algorithms, algorithm)
+        self.set_test_arr(algorithm)
+
+        if 'search' in algorithm:
+            function = self.search_for_random_num
+        else: 
+            function = self.run_sort_algo
+
         for arr in self.test_arr:
             self.arr_length.append(len(arr))
-            if find_int:
-                result = self.search_for_random_num(func, arr)
-            else:
-                result = self.run_sort_algo(func, arr)
-
+            result = function(algorithm_to_call, arr)
             self.time_results.append(self.get_average(result))
+            
         return self.time_results, self.arr_length
+
+    def set_test_arr(self, algorithm):
+        if 'dups' in algorithm:
+            self.test_arr = insert_dup(self.test_arr)
 
     def search_for_random_num(self, func, arr):
         hold_arr = []
