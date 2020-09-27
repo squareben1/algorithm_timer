@@ -35,17 +35,18 @@ class AlgoApp:
             self.collate_and_set_timing_data(arr, algorithm_to_time, selected_function_type)
 
 
-    def collate_and_set_timing_data(self, arr, algorithm_to_time, selected_function_type):
-        self.arr_length.append(len(arr))
-        result = self.run_algorithm(algorithm_to_time, arr, selected_function_type)
-        self.time_results.append(
-            self.get_average_selected_time_data(result))
-
     def select_function_type(self, algorithm):
         if 'search' in algorithm:
             return self.search_random_number
         else:
             return self.run_non_search_algorithm
+
+
+    def collate_and_set_timing_data(self, arr, algorithm_to_time, selected_function_type):
+        self.arr_length.append(len(arr))
+        result = self.run_algorithm(algorithm_to_time, arr, selected_function_type)
+        self.time_results.append(
+            self.get_average_selected_time_data(result))
 
 
     def search_random_number(self, func, arr):
