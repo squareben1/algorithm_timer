@@ -13,60 +13,62 @@ class AlgoApp:
         self.arr_length = []
         self.run_times = 5
 
+
     def run(self, algorithm):
-        algorithm_to_call = getattr(algorithms, algorithm)
         self.set_test_arr(algorithm)
-
-        # if 'search' in algorithm:
-        #     selected_function = self.search_for_random_num
-        # else:
-        #     
-        selected_function = self.select_function(algorithm)
-
-        self.loop_over_array(selected_function, algorithm_to_call)
+ 
+        self.loop_over_array(algorithm)
 
         create_graph(self.time_results, self.arr_length,
-                     algorithm_to_call.__name__)
+                     algorithm)
+
 
     def set_test_arr(self, algorithm):
         if 'dups' in algorithm:
             self.test_arr = insert_dup(self.test_arr)
 
-    def select_function(self, algorithm):
-        if 'search' in algorithm:
-            return self.search_for_random_num
-        else:
-            return self.run_sort_algo
 
-    def loop_over_array(self, selected_function, algorithm_to_call):
+    def loop_over_array(self, algorithm):
+        algorithm_to_call = getattr(algorithms, algorithm)
+        selected_function = self.select_function_type(algorithm)
+        
         for arr in self.test_arr:
             self.arr_length.append(len(arr))
-            result = selected_function(algorithm_to_call, arr)
+            result = self.run_algorithm(algorithm_to_call, arr, selected_function)
             self.time_results.append(
                 self.get_average_selected_time_data(result))
 
 
+    def select_function_type(self, algorithm):
+        if 'search' in algorithm:
+            return self.search_random_number
+        else:
+            return self.run_non_search_algorithm
 
-    def search_for_random_num(self, func, arr):
+
+    def run_algorithm(self, func, arr, selected_function):
         hold_arr = []
         for i in range(self.run_times):
-            output = self.timer.get_average(
+            output = selected_function(func, arr)
+            hold_arr.append(output[0])
+        return hold_arr
+
+
+    def search_random_number(self, func, arr):
+        return self.timer.get_average(
                 func, arr, random.randint(0, len(arr)))
-            hold_arr.append(output[0])
-        return hold_arr
 
-    def run_sort_algo(self, func, arr):
-        hold_arr = []
-        for i in range(self.run_times):
-            output = self.timer.get_average(
+
+    def run_non_search_algorithm(self, func, arr):
+        return self.timer.get_average(
                 func, arr)
-            hold_arr.append(output[0])
-        return hold_arr
+
 
     def get_average_selected_time_data(self, result):
         sliced_results = self.slice_outlier_results(result)
         average = sum(sliced_results) / len(sliced_results)
         return average
+
 
     def slice_outlier_results(self, results_array):
         results_array = sorted(results_array)
