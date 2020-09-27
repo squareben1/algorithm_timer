@@ -17,15 +17,26 @@ class AlgoApp:
         algorithm_to_call = getattr(algorithms, algorithm)
         self.set_test_arr(algorithm)
 
-        if 'search' in algorithm:
-            selected_function = self.search_for_random_num
-        else:
-            selected_function = self.run_sort_algo
+        # if 'search' in algorithm:
+        #     selected_function = self.search_for_random_num
+        # else:
+        #     
+        selected_function = self.select_function(algorithm)
 
         self.loop_over_array(selected_function, algorithm_to_call)
 
         create_graph(self.time_results, self.arr_length,
                      algorithm_to_call.__name__)
+
+    def set_test_arr(self, algorithm):
+        if 'dups' in algorithm:
+            self.test_arr = insert_dup(self.test_arr)
+
+    def select_function(self, algorithm):
+        if 'search' in algorithm:
+            return self.search_for_random_num
+        else:
+            return self.run_sort_algo
 
     def loop_over_array(self, selected_function, algorithm_to_call):
         for arr in self.test_arr:
@@ -34,9 +45,7 @@ class AlgoApp:
             self.time_results.append(
                 self.get_average_selected_time_data(result))
 
-    def set_test_arr(self, algorithm):
-        if 'dups' in algorithm:
-            self.test_arr = insert_dup(self.test_arr)
+
 
     def search_for_random_num(self, func, arr):
         hold_arr = []
