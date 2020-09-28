@@ -17,7 +17,6 @@ class AlgoApp:
     def run(self, algorithm):
         self.set_test_arr(algorithm)
         self.loop_over_array(algorithm)
-
         create_graph(self.time_results, self.arr_length,
                      algorithm)
 
@@ -29,24 +28,17 @@ class AlgoApp:
 
     def loop_over_array(self, algorithm):
         algorithm_to_time = getattr(algorithms, algorithm)
-        selected_function_type = self.select_function_type(algorithm)
+        selected_algorithm_type = self.select_algorithm_type(algorithm)
         
         for arr in self.test_arr:
-            self.collate_and_set_timing_data(arr, algorithm_to_time, selected_function_type)
+            self.collate_and_set_timing_data(arr, algorithm_to_time, selected_algorithm_type)
 
 
-    def select_function_type(self, algorithm):
+    def select_algorithm_type(self, algorithm):
         if 'search' in algorithm:
             return self.search_random_number
         else:
             return self.run_non_search_algorithm
-
-
-    def collate_and_set_timing_data(self, arr, algorithm_to_time, selected_function_type):
-        self.arr_length.append(len(arr))
-        result = self.run_algorithm(algorithm_to_time, arr, selected_function_type)
-        self.time_results.append(
-            self.get_average_selected_time_data(result))
 
 
     def search_random_number(self, func, arr):
@@ -59,10 +51,17 @@ class AlgoApp:
                 func, arr)
 
 
-    def run_algorithm(self, func, arr, selected_function_type):
+    def collate_and_set_timing_data(self, arr, algorithm_to_time, selected_algorithm_type):
+        self.arr_length.append(len(arr))
+        result = self.run_algorithm(algorithm_to_time, arr, selected_algorithm_type)
+        self.time_results.append(
+            self.get_average_selected_time_data(result))
+
+
+    def run_algorithm(self, func, arr, selected_algorithm_type):
         hold_arr = []
         for i in range(self.run_times):
-            output = selected_function_type(func, arr)
+            output = selected_algorithm_type(func, arr)
             hold_arr.append(output[0])
         return hold_arr
 

@@ -47,7 +47,6 @@ def slow_find_dups(arr):
             if arr[i] == arr[y] and arr[i] not in duplicates:
                 duplicates.append(arr[i])
                 break
-    # print(duplicates)
     return duplicates
 
 
