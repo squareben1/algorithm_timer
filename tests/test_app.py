@@ -30,3 +30,6 @@ def test_run_algorithm_on_non_search_algo():
 def test_collate_and_set_timing_data():
     output = subject.collate_and_set_timing_data(
         arr_input, dummy_algorithm, subject.run_non_search_algorithm)
+    print(subject.time_results)
+    assert subject.arr_length[0] == len(arr_input)
+    assert type(subject.time_results[0]) is float
