@@ -6,12 +6,13 @@ import algorithms
 
 
 class AlgoApp:
-    def __init__(self, arr_num, arr_max):
+    def __init__(self, arr_max):
         self.timer = AlgoTimer()
-        self.test_arr = arr_generator(int(arr_num), int(arr_max))
+        self.number_of_arrs = 50
+        self.test_arr = arr_generator(self.number_of_arrs, int(arr_max))
         self.time_results = []
         self.arr_length = []
-        self.run_times = 5
+        self.run_times = 250
 
 
     def run(self, algorithm):
@@ -83,8 +84,8 @@ class AlgoApp:
 if __name__ == "__main__":
     import sys
     import algorithms
-    app = AlgoApp(sys.argv[1], sys.argv[2])
-    app.run(sys.argv[3])
+    app = AlgoApp(sys.argv[1])
+    app.run(sys.argv[2])
 
 # TODO write algorithms for shuffling, sorting and reversing
 # TODO remove number of arrays as argument
