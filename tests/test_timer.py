@@ -14,4 +14,5 @@ def return_after_point_one_sec(arr):
 def test_basic_timer():
     output = subject.basic_timer(return_after_point_one_sec, input_arr)
     print(output)
-    assert output > 0.1 and output < 0.2
+    assert output > 0.1 and output < 0.15
+
