@@ -12,8 +12,8 @@ def binary_search(arr, item):
             low = mid + 1
 
 
-def linear_search(myarr, find):
-    for x in myarr:
+def linear_search(arr, find):
+    for x in arr:
         if x == find:
             return True
     return False
