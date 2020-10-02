@@ -14,6 +14,14 @@ def test_slice_outlier_results():
 
 
 def test_get_average_selected_time_data():
-    sliced_arr = [2, 3, 4, 5, 6, 7, 8, 9]
-    expected = sum(sliced_arr) / len(sliced_arr)
-    assert subject.get_average_selected_time_data(arr_input) == expected
+    assert subject.get_average_selected_time_data(arr_input) == 5.5
+
+
+def dummy_algorithm(arr):
+    return arr[0]
+
+
+def test_run_algorithm_on_non_search_algo():
+    output = subject.run_algorithm(
+        dummy_algorithm, arr_input, subject.run_non_search_algorithm)
+    assert len(output) == subject.run_times
