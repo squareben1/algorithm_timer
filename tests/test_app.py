@@ -25,3 +25,8 @@ def test_run_algorithm_on_non_search_algo():
     output = subject.run_algorithm(
         dummy_algorithm, arr_input, subject.run_non_search_algorithm)
     assert len(output) == subject.run_times
+
+
+def test_collate_and_set_timing_data():
+    output = subject.collate_and_set_timing_data(
+        arr_input, dummy_algorithm, subject.run_non_search_algorithm)
