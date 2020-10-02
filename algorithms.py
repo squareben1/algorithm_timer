@@ -62,7 +62,7 @@ def find_dups(arr):  # second, much faster attempt,
 def find_uniq(arr):
     seen = set()
     uniq = []
-    for x in a:
+    for x in arr:
         if x not in seen:
             uniq.append(x)
             seen.add(x)

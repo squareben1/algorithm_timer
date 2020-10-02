@@ -1,4 +1,6 @@
 import pytest
+import mock
+from unittest.mock import Mock, patch
 
 from app import AlgoApp
 
@@ -42,3 +44,9 @@ def test_select_algorithm_type_search():
 def test_select_algorithm_type_non_search():
     assert subject.select_algorithm_type(
         'find_dups') == subject.run_non_search_algorithm
+
+
+def test_loop_over_array():
+    with mock.patch('app.AlgoApp.collate_and_set_timing_data') as mock_collate:
+        subject.loop_over_array('binary_search')
+        assert mock_collate.called
