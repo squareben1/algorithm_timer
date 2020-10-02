@@ -80,3 +80,4 @@ if __name__ == "__main__":
     app.run(sys.argv[2])
 
 # TODO write algorithms for shuffling, sorting and reversing
+# TODO sort file structure (only app.py in root)
