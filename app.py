@@ -6,10 +6,10 @@ import algorithms
 
 
 class AlgoApp:
-    def __init__(self, arr_max):
+    def __init__(self, max_arr_size, number_of_arrs=50):
         self.timer = AlgoTimer()
-        self.number_of_arrs = 50
-        self.test_arr = arr_generator(self.number_of_arrs, int(arr_max))
+        self.number_of_arrs = number_of_arrs
+        self.test_arr = arr_generator(self.number_of_arrs, int(max_arr_size))
         self.time_results = []
         self.arr_length = []
         self.run_times = 250

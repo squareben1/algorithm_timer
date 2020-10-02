@@ -10,7 +10,7 @@ The increasing size of arrays allows for the increasing time taken by each algor
 
 Example: ```python3 app.py 2000 binary_search```
 
-In the above example: 
+In the above example:
 
 `2000` = the size of the largest array.
 
@@ -25,7 +25,7 @@ You can add your own algorithms to that file and run them.
 Start virtual environment in ROOT:
 ```source py3_env/bin/activate```
 
-Enter into your terminal: 
+Enter into your terminal:
 
 ``` python3 app.py <size of largest array> <function_name to be timed> ```
 
