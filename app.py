@@ -81,3 +81,4 @@ if __name__ == "__main__":
 
 # TODO write algorithms for shuffling, sorting and reversing
 # TODO remove number of arrays as argument
+# TODO write tests for timer
