@@ -50,3 +50,13 @@ def test_loop_over_array():
     with mock.patch('app.AlgoApp.collate_and_set_timing_data') as mock_collate:
         subject.loop_over_array('binary_search')
         assert mock_collate.called
+
+
+def test_set_test_arr_no_dups():
+    subject.set_test_arr('binary_search')
+    assert subject.test_arr[1] == [1, 2]
+
+
+def test_set_test_arr_with_dups():
+    subject.set_test_arr('find_dups')
+    assert subject.test_arr[1] == [2, 2]
