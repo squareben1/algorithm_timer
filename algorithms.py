@@ -97,5 +97,5 @@ def knuth_shuffle(ar):
     for i in range(num):
         index = randint(0, i)
         ar[i], ar[index] = ar[index], ar[i]
-        return ar
-        
+    
+    return ar
