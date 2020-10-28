@@ -1,5 +1,5 @@
 import pytest
-import mock
+from unittest import mock
 from unittest.mock import Mock, patch
 
 from app import AlgoApp
@@ -30,7 +30,7 @@ def test_run_algorithm_on_non_search_algo():
 
 
 def test_collate_and_set_timing_data():
-    output = subject.collate_and_set_timing_data(
+    subject.collate_and_set_timing_data(
         arr_input, dummy_algorithm, subject.run_non_search_algorithm)
     assert subject.arr_length[0] == len(arr_input)
     assert type(subject.time_results[0]) is float
@@ -47,7 +47,7 @@ def test_select_algorithm_type_non_search():
 
 
 def test_loop_over_array():
-    with mock.patch('app.AlgoApp.collate_and_set_timing_data') as mock_collate:
+    with patch('app.AlgoApp.collate_and_set_timing_data') as mock_collate:
         subject.loop_over_array('binary_search')
         assert mock_collate.called
 

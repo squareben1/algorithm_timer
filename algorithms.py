@@ -1,3 +1,6 @@
+from random import randint
+
+
 def binary_search(arr, item):
     low = 0
     high = len(arr) - 1
@@ -67,3 +70,14 @@ def find_uniq(arr):
             uniq.append(x)
             seen.append(x)
     return uniq
+
+
+def shuffle(array):
+    new_array = []
+
+    while array:
+        random_index = randint(0, len(array))
+        new_array.append(array[random_index])
+        del array[random_index]
+
+    return new_array
