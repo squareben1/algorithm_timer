@@ -72,12 +72,30 @@ def find_uniq(arr):
     return uniq
 
 
-def shuffle(array):
+def slow_shuffle(array):
     new_array = []
 
     while array:
-        random_index = randint(0, len(array))
+        random_index = randint(0, len(array)-1)
         new_array.append(array[random_index])
         del array[random_index]
 
     return new_array
+
+def shuffle(array):
+    new_array = []
+
+    while array:
+        random_index = randint(0, len(array)-1)
+        array[random_index], array[-1] = array[-1], array[random_index]
+        new_array.append(array.pop())
+
+    return new_array
+
+def knuth_shuffle(ar):
+    num = len(ar)
+    for i in range(num):
+        index = randint(0, i)
+        ar[i], ar[index] = ar[index], ar[i]
+        return ar
+        

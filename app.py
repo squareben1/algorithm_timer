@@ -68,7 +68,7 @@ class AlgoApp:
     def slice_outlier_results(self, results_array):
         results_array = sorted(results_array)
         for time in results_array:
-            pc_to_cut = len(results_array) // 10
+            pc_to_cut = len(results_array) // 20
             end_slice = len(results_array) - pc_to_cut
         return results_array[pc_to_cut:end_slice]
 
