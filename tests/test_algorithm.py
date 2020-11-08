@@ -64,6 +64,9 @@ class TestShuffle:
 
     def test_shuffles_arr(self):
         assert slow_shuffle(uniq_arr) != uniq_arr
+<<<<<<< HEAD
+=======
 
     def test_shuffles_arr_faster(self):
         assert shuffle(uniq_arr) != uniq_arr
+>>>>>>> b73514883daa2207fc90f43ba1e05fd2c110538c
