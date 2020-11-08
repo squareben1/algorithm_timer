@@ -92,10 +92,10 @@ def shuffle(array):
 
     return new_array
 
-def knuth_shuffle(ar):
-    num = len(ar)
+def knuth_shuffle(arr):
+    num = len(arr)
     for i in range(num):
         index = randint(0, i)
-        ar[i], ar[index] = ar[index], ar[i]
+        arr[i], arr[index] = arr[index], arr[i]
     
-    return ar
+    return arr

@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "algorithm_timer"
+version = "0.1.0"
+description = "A program to time and graph algorithmic complexity."
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/squareben1/algorithm_timer"
+repository = "https://github.com/squareben1/algorithm_timer"
+keywords = ["algorithms"]
+authors = ["mattyocode <matthewoliver@live.co.uk>", "squareben", <bengittins@live.com>]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
