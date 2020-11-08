@@ -1,6 +1,5 @@
 import pytest
-from algorithms import *
-
+from algorithm_timer.algorithms import *
 
 example_arr = [1, 3, 5, 7, 9]
 
@@ -60,13 +59,12 @@ class TestFindUnique:
         assert find_uniq(uniq_arr) == [1, 2]
 
 
-class TestShuffle:
+shuffle_arr = [1, 2, 3, 4, 5]
+shuffle_arr2 = [1, 2, 3, 4, 5]
 
+class TestShuffle:
     def test_shuffles_arr(self):
-        assert slow_shuffle(uniq_arr) != uniq_arr
-<<<<<<< HEAD
-=======
+        assert slow_shuffle(shuffle_arr) != shuffle_arr
 
     def test_shuffles_arr_faster(self):
-        assert shuffle(uniq_arr) != uniq_arr
->>>>>>> b73514883daa2207fc90f43ba1e05fd2c110538c
+        assert shuffle(shuffle_arr2) != shuffle_arr2

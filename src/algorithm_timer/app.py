@@ -1,9 +1,9 @@
 import random
 
-from grapher import create_graph
-from timer import AlgoTimer
-from arr_generators import *
-import algorithms
+from .graph_maker import create_graph
+from .timer import AlgoTimer
+from .arr_generators import *
+from . import algorithms
 
 
 class AlgoApp:
@@ -69,7 +69,7 @@ class AlgoApp:
     def slice_outlier_results(self, results_array):
         results_array = sorted(results_array)
         for time in results_array:
-            pc_to_cut = len(results_array) // 20
+            pc_to_cut = len(results_array) // 10
             end_slice = len(results_array) - pc_to_cut
         return results_array[pc_to_cut:end_slice]
 
