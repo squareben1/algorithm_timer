@@ -1,4 +1,5 @@
 import random
+
 from grapher import create_graph
 from timer import AlgoTimer
 from arr_generators import *

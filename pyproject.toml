@@ -7,10 +7,12 @@ readme = "README.md"
 homepage = "https://github.com/squareben1/algorithm_timer"
 repository = "https://github.com/squareben1/algorithm_timer"
 keywords = ["algorithms"]
-authors = ["mattyocode <matthewoliver@live.co.uk>", "squareben", <bengittins@live.com>]
+authors = ["mattyocode <matthewoliver@live.co.uk>", "squareben <bengittins@live.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
+matplotlib = "^3.3.2"
+numpy = "^1.19.4"
 
 [tool.poetry.dev-dependencies]
 
