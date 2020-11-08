@@ -62,6 +62,7 @@ class TestFindUnique:
 shuffle_arr = [1, 2, 3, 4, 5]
 shuffle_arr2 = [1, 2, 3, 4, 5]
 
+
 class TestShuffle:
     def test_shuffles_arr(self):
         assert slow_shuffle(shuffle_arr) != shuffle_arr

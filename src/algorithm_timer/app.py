@@ -74,9 +74,16 @@ class AlgoApp:
         return results_array[pc_to_cut:end_slice]
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+#     import sys
+#     import algorithms
+#     app = AlgoApp(sys.argv[1])
+#     app.run(sys.argv[2])
+
+
+def main():
     import sys
-    import algorithms
+    # import algorithms
     app = AlgoApp(sys.argv[1])
     app.run(sys.argv[2])
 

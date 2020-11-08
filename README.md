@@ -8,11 +8,11 @@ One integer is passed into the app - this is the maximum size of the final array
 
 The increasing size of arrays allows for the increasing time taken by each algorithm to be easily plotted on a graph to identify big-O notation for each algorithm.
 
-Example: ```python3 app.py 2000 binary_search```
+Example: ```poetry algorithm-timer 2000 binary_search```
 
 In the above example:
 
-`2000` = the size of the largest array.
+`2000` = the size of the largest array to search.
 
 `binary_search` is the name of the algorithm.
 
@@ -23,12 +23,12 @@ You can add your own algorithms to that file and run them.
 ### To run:
 
 Start virtual environment in ROOT:
-```source py3_env/bin/activate```
+```poetry install```
 
 Enter into your terminal:
 
-``` python3 app.py <size of largest array> <function_name to be timed> ```
+``` poetry algorithm-timer <size of largest array> <function_name to be timed> ```
 
 Example:
 
-```python3 app.py 20000 binary_search```
+```poetry algorithm-timer 20000 binary_search```
