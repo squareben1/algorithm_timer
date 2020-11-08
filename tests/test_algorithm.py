@@ -63,4 +63,4 @@ class TestFindUnique:
 class TestShuffle:
 
     def test_shuffles_arr(self):
-        assert shuffle(uniq_arr) != uniq_arr
+        assert slow_shuffle(uniq_arr) != uniq_arr

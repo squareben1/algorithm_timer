@@ -72,11 +72,11 @@ def find_uniq(arr):
     return uniq
 
 
-def shuffle(array):
+def slow_shuffle(array):
     new_array = []
 
     while array:
-        random_index = randint(0, len(array))
+        random_index = randint(0, len(array)-1)
         new_array.append(array[random_index])
         del array[random_index]
 
