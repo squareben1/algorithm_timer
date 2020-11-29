@@ -1,9 +1,9 @@
 import random
 
-from .graph_maker import create_graph
-from .timer import AlgoTimer
-from .arr_generators import *
-from . import algorithms
+from graph_maker import create_graph
+from timer import AlgoTimer
+from arr_generators import *
+import algorithms
 
 
 class AlgoApp:
@@ -69,23 +69,23 @@ class AlgoApp:
     def slice_outlier_results(self, results_array):
         results_array = sorted(results_array)
         for time in results_array:
-            pc_to_cut = len(results_array) // 10
+            pc_to_cut = len(results_array) // 20
             end_slice = len(results_array) - pc_to_cut
         return results_array[pc_to_cut:end_slice]
 
 
-# if __name__ == "__main__":
-#     import sys
-#     import algorithms
-#     app = AlgoApp(sys.argv[1])
-#     app.run(sys.argv[2])
-
-
-def main():
+if __name__ == "__main__":
     import sys
-    # import algorithms
+    import algorithms
     app = AlgoApp(sys.argv[1])
     app.run(sys.argv[2])
+
+
+# def main():
+#     import sys
+#     # import algorithms
+#     app = AlgoApp(sys.argv[1])
+#     app.run(sys.argv[2])
 
 # TODO write algorithms for shuffling, sorting and reversing
 # TODO sort file structure (only app.py in root)

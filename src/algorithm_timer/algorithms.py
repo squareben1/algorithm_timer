@@ -1,5 +1,5 @@
 from random import randint
-
+from collections import Counter
 
 def binary_search(arr, item):
     low = 0
@@ -99,3 +99,37 @@ def knuth_shuffle(arr):
         arr[i], arr[index] = arr[index], arr[i]
     
     return arr
+
+def reverse(arr):
+    return arr[::-1]
+
+
+# def find_most_freq_word_dup(arr):
+#     if len(arr) > 0:
+#         word_dict = {}
+#         for word in arr:
+#             if word not in set(word_dict.keys()):
+#                 word_dict[word] = 1
+#             else:
+#                 value = word_dict[word]
+#                 word_dict[word] = value + 1
+
+#         return [k for k, v in sorted(word_dict.items(), key=lambda item: item[1])][-1]
+
+
+def find_most_freq_word_dup(arr): 
+    counter = 0
+    item = 0 
+
+    for i in arr: 
+        curr_frequency = arr.count(i) 
+        if(curr_frequency > counter): 
+            counter = curr_frequency 
+            item = i 
+  
+    return item 
+
+
+def find_most_common_counter_dups(arr):
+    if len(arr) > 0:
+        return [word for word, word_count in Counter(arr).most_common(1)][0]

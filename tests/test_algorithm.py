@@ -1,5 +1,5 @@
 import pytest
-from algorithm_timer.algorithms import *
+from src.algorithm_timer.algorithms import *
 
 example_arr = [1, 3, 5, 7, 9]
 
@@ -69,3 +69,18 @@ class TestShuffle:
 
     def test_shuffles_arr_faster(self):
         assert shuffle(shuffle_arr2) != shuffle_arr2
+
+
+class TestReverse:
+
+    def test_reverses_arr(self):
+        output = reverse([1, 2])
+        assert output == [2, 1]
+
+class TestMostFreqWords:
+
+    def test_find_most_frequest_words(self):
+        input_arr = ['one', 'two', 'one']
+        output_arr = 'one'
+
+        assert find_most_common_counter_dups(input_arr) == output_arr
